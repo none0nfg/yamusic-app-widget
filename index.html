@@ -1,0 +1,112 @@
+<html>
+<!--<meta http-equiv="refresh" content="30">-->
+<link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+<body>
+  <div class="container">
+    <img>
+    <div class="textbox" id="name"><span class="text" id="name">song.name</span></div>
+    <div class="textbox" id="author"><span class="text" id="author">song.author</span></div>
+    <div class="circle" id="outer"><div class="circle" id="inner"/></div>
+  </div>
+</body>
+
+<style type="text/css">
+img {
+width: 200px;
+height: 200px;
+left: 16px;
+top: 16px;
+margin: 16px 16px 16px 16px;
+background-image: url("not-found.svg");
+display: block;
+border-radius: 12px;
+}
+
+.textbox {
+  margin-left: 16px;
+}
+
+.text {
+  display: block;
+  font-family: 'Play';
+  font-style: normal;
+  color: #FFFFFF;
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+  width: 200px;
+}
+
+#name {
+height: 21px;
+font-weight: 700;
+font-size: 18px;
+line-height: 21px;
+}
+
+#author {
+height: 16px;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+margin-top: 4px;
+}
+
+.circle {
+  position: absolute;
+  bottom: -65;
+  left: -60;
+  border-radius: 100%;
+  background: rgba(217, 217, 217, 0.2);
+}
+
+.circle#inner {
+  width: 94px;
+  height: 94px;
+  left: 37px;
+  top: 37px;
+}
+
+.circle#outer {
+  width: 168px;
+  height: 168px;
+}
+
+.container {
+overflow: hidden;
+width: 232px;
+height: 289px;
+position: relative;
+background: linear-gradient(192.29deg, #D71DF5 4.74%, #1C24E0 93.37%);
+border-radius: 24px;
+}
+</style>
+<script type="text/javascript">
+async function logJSONData() {
+  const response = await fetch("http://localhost:1337/data");
+  const jsonData = await response.json();
+  console.log(jsonData);
+
+  const image = document.querySelector("img");
+  if (image.getAttribute("src") != jsonData.img && jsonData.img) {
+    image.setAttribute("src", jsonData.img)
+  } else { 
+    if (!jsonData.img) {
+      image.removeAttribute("src")
+    }
+  }
+
+  const name = document.querySelector(".text#name")
+  if (name.innerHTML != jsonData.name) {
+    name.innerHTML = jsonData.name;
+  }
+
+  const author = document.querySelector(".text#author")
+  if (author.innerHTML != jsonData.author) {
+    author.innerHTML = jsonData.author;
+  }
+}
+setInterval(logJSONData, 1000);
+</script>
+
+</html>
