@@ -1,4 +1,4 @@
-import yamapi from 'yandexmusappapi';
+import YaMApi from 'yandexmusappapi';
 import * as http from 'http';
 import * as fs from 'node:fs/promises';
 import { fileURLToPath } from 'url';
@@ -9,15 +9,10 @@ const port = 1337;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const yaapi = new YaMApi();
+yaapi.setYandexPath("/logs");
+
 const requestListener = async function (req, res) {
-	if (req.url == "/not-found.svg") {
-		fs.readFile(__dirname + "/not-found.svg")
-		.then(contents => {
-                        res.setHeader("Content-Type", "image/svg+xml");
-                        res.writeHead(200);
-                        res.end(contents);
-                })
-	}
 	if (req.url == "/") {
 		fs.readFile(__dirname + "/index.html")
 		.then(contents => {
@@ -27,12 +22,12 @@ const requestListener = async function (req, res) {
         	})
 	}
 	if (req.url == "/data") {
-		const song = await yamapi.getSong()
-		console.log(song);
+		await yaapi.updateSong()
+		const song = yaapi.getSong()
 		if (!song.img) {
 			song.img = "";	
 		}
-		const data = { name: song.name, author: song.author, img: song.img }
+		const data = { name: song.name, author: song.author, img: "https://"+song.img }
 		res.end(JSON.stringify(data))
 	}
 };

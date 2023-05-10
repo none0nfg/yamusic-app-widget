@@ -1,5 +1,7 @@
 # yamusic-app-widget
 
+Docker image: https://hub.docker.com/r/none0nfg/yamusic-widget
+
 Docker image to serve nodejs web server, which respond an html template on "/" path, and json data about current song on "/data".
 
 DONT'T FORGET TO CHANGE $USER VARIABLE IN DOCKER-COMPOSE TO YOUR OWN

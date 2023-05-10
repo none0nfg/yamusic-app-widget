@@ -1,0 +1,24 @@
+{
+  "name": "yamusic-app-widget",
+  "version": "1.0.0",
+  "description": "Docker image: https://hub.docker.com/r/13348592535/yamusic-widget",
+  "main": "index.js",
+  "dependencies": {
+    "yandexmusappapi": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/none0nfg/yamusic-app-widget.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/none0nfg/yamusic-app-widget/issues"
+  },
+  "homepage": "https://github.com/none0nfg/yamusic-app-widget#readme"
+}

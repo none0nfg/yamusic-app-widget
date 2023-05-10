@@ -1,7 +1,7 @@
 version: "3.3"
 services:
  yamusic:
-   image: 13348592535/yamusic-widget:latest
+   image: none0nfg/yamusic-widget:latest
    restart: always
    ports:
      - 127.0.0.1:1337:1337

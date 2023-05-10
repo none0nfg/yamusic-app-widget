@@ -1,6 +1,9 @@
 FROM node:18-alpine
 WORKDIR /app
-RUN npm install yandexmusappapi
-COPY node_modules/yandexmusappapi ./node_modules/yandexmusappapi
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY src /app/src
+
 EXPOSE 1337
-CMD node script.mjs
+CMD node src/script.mjs
