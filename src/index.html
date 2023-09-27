@@ -85,11 +85,10 @@ border-radius: 24px;
 async function logJSONData() {
   const response = await fetch("http://localhost:1337/data");
   const jsonData = await response.json();
-  console.log(jsonData);
 
   const image = document.querySelector("img");
   if (image.getAttribute("src") != jsonData.img && jsonData.img) {
-    image.setAttribute("src", jsonData.img)
+    image.setAttribute("src", "https://" + jsonData.img)
   } else { 
     if (!jsonData.img) {
       image.removeAttribute("src")

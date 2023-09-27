@@ -1,9 +1,9 @@
 version: "3.3"
 services:
  yamusic:
-   image: none0nfg/yamusic-widget:latest
+     image: none0nfg/yamusic-widget:latest
    restart: always
    ports:
      - 127.0.0.1:1337:1337
    volumes:
-     - /mnt/c/Users/${USER}/AppData/Local/Packages/A025C540.Yandex.Music_vfvw9svesycw6/LocalCache/Logs:/logs
+     - /mnt/c/Users/garik/AppData/Local/Packages/A025C540.Yandex.Music_vfvw9svesycw6/LocalCache/Logs:/logs

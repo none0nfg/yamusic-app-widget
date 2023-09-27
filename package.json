@@ -4,7 +4,7 @@
   "description": "Docker image: https://hub.docker.com/r/13348592535/yamusic-widget",
   "main": "index.js",
   "dependencies": {
-    "yandexmusappapi": "^3.0.0"
+    "yandexmusappapi": "^3.1.0"
   },
   "devDependencies": {},
   "scripts": {
